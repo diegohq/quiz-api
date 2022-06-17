@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  npm:
+    build: 
+      context: ./
+      dockerfile: docker/node.Dockerfile
+    entrypoint: ['npm']
+    volumes:
+      - ./:/code/quiz-api
+  nest:
+    build: 
+      context: ./
+      dockerfile: docker/node.Dockerfile
+    entrypoint: ['nest']
+    volumes:
+      - ./:/code/quiz-api
+  start:
+    build: 
+      context: ./
+      dockerfile: docker/node.Dockerfile
+    ports:
+      - '3000:3000'
+    command: ['npm', 'start']
+    volumes:
+      - ./:/code/quiz-api
