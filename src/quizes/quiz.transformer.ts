@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { Quiz, QuizDocument } from './schemas/quiz.schema';
+import { Question } from './schemas/question.schema';
+import { QuizDocument } from './schemas/quiz.schema';
 
 @Injectable()
 export default class QuizTransformer {
@@ -8,6 +9,13 @@ export default class QuizTransformer {
       id: quiz.id,
       title: quiz.title,
       description: quiz.description,
+      questions: quiz.questions.map((question: Question) => {
+        return {
+          question: question.question,
+          options: question.options,
+          correctKeyOption: question.correctKeyOption
+        }
+      })
     };
   }
 }
