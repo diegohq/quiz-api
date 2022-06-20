@@ -21,3 +21,13 @@ To run commands on Nest CLI:
 ```bash
 docker-compose run --rm nest <COMMAND>
 ```
+
+### Tests
+
+To run tests:
+
+```bash
+docker-compose run --rm npm run test
+```
+
+The first time you run the tests might take longer (`mongodb-memory-server` must download the MongoDB binaries).

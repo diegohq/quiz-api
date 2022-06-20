@@ -7,6 +7,7 @@ services:
     entrypoint: ['npm']
     volumes:
       - ./:/code/quiz-api
+      - ./docker/dev/volumes/mongo-memory-server:/.cache/mongodb-binaries
   nest:
     build: 
       context: ./
